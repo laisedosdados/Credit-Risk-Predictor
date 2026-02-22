@@ -9,7 +9,7 @@ np.random.seed(42)
 dados_clientes = {
     'id_cliente': range(1, numero_clientes + 1),
     'renda_mensal': np.random.normal(4500, 1500, numero_clientes).clip(1621),
-    'score_interno': np.random.randint(300, 1000, numero_clientes),
+    'score_interno': np.random.randint(300, 1000, numero_clientes), #sorteia uma nota de 300 a mil para cada
     'estado_civil': np.random.choice(['Solteiro', 'Casado', 'Divorciado', 'Viúvo'], numero_clientes)
 }
 df_clientes = pd.DataFrame(dados_clientes)
@@ -37,7 +37,7 @@ caminho_raw = 'data/raw'
 if not os.path.exists(caminho_raw):
     os.makedirs(caminho_raw)
 # Salvando a tabela de clientes e faturas em formato CSV
-# O index = false evita crioar uma coluna com números desnecessários
+# O index = false evita criar uma coluna com números desnecessários
 df_clientes.to_csv(f"{caminho_raw}/clientes.csv", index=False)
 df_faturas.to_csv(f"{caminho_raw}/faturas.csv", index=False)
 # Imprimindo na tela

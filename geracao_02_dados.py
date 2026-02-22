@@ -1,6 +1,8 @@
 import pandas as pd
+# Traduz python para SQL
 from sqlalchemy import create_engine
 import os
+## Ferramenta para ler o arquivo .env
 from dotenv import load_dotenv
 load_dotenv()
 conexao_render = os.environ.get('DATABASE_URL')
@@ -16,7 +18,7 @@ def carregar_dados():
         print("Enviando dados para o PostgreSQL...")
         df_clientes.to_sql('clientes', engine, if_exists='replace', index=False)
         df_faturas.to_sql('faturas', engine, if_exists='replace', index=False)   
-        print("Seus dados ja estao na nuvem!!!")    
+        print("Seus dados já estao na nuvem!!!")    
     except Exception as e:
         print(f"Erro: {e}")
 if __name__ == "__main__":
