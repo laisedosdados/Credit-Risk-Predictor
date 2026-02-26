@@ -31,10 +31,10 @@ Para comunicar os resultados de forma clara, desenvolvi painéis visuais.
 **Proporção de Atrasos por Peso da Fatura no Salário:**
  ![alt text](image.png)I]
 
-**Inadimplência por Estado Civil:**
+**Inadimplência por Estado Civil:**                 
 ![alt text](image-1.png)
 
-**Quantidades de faturas atrasadas por faixa de Score:**
+**Quantidades de faturas atrasadas por faixa de Score:**                  
 ![alt text](image-2.png)
 ### 4️⃣ Machine Learning (O Cérebro do Projeto)
 Após preparar os dados (transformando variáveis categóricas com One-Hot Encoding via `get_dummies`), treinei um modelo de **Random Forest (Floresta Aleatória)** para prever futuros calotes.
@@ -44,7 +44,7 @@ Após preparar os dados (transformando variáveis categóricas com One-Hot Encod
 * O modelo obteve excelente performance para identificar bons pagadores (Recall de 94%).
 * **Ponto de Melhoria Identificado:** Devido ao desbalanceamento natural dos dados (muito mais clientes bons do que ruins), o modelo teve dificuldade de identificar caloteiros isolados (Recall baixo para a classe 0). O próximo passo técnico seria aplicar técnicas de balanceamento (como SMOTE) para refinar a IA.
 
-**Matriz de Confusão do Modelo:**
+**Matriz de Confusão do Modelo:**                
 ![alt text](image-3.png)
 
 ### 5️⃣ Deploy da Aplicação (O Produto Final)
