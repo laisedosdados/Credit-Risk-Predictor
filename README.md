@@ -1,18 +1,50 @@
-## **Credit Risk Predictor**
-## Visão geral do projeto
-O objetivo do **Credit Risk Predictor** é simular o ciclo completo de análise de risco de crédito. No projeto, o comportamento financeiro do cliente será analisado e, a partir disso, será criado um modelo preditivo a fim de identificar a probabilidade de inadimplência de novos clientes.
-## Stacks utilizadas
-**1. Linguagem**: Python   
-**2. Bibliotecas de dados**: Pandas, SQLAlchemy, psycopg2   
-**3. Banco de Dados**: PostgreSQL  
-**4. Machine learning**: Scikit-Learn   
-**5. Visualização de dados**: Matplotlib e Seaborn
-## Objetivos
-* Identificar quais clientes tem maior possibilidade de inadimplência;
-* Criar indicadores que auxiliem na tomda de decisão;
-* Simular anonimização de dados sensíveis;
-## Etapas:
-1. **Simulação com dados fictícios (Python)**:  `Pandas`e `Numpy` serão utilizados para criar um dataset com 1000 clientes fictícios.
-2. **Carregamento de dados (PostgreSQL)**: os dados serão carregados em um banco de dados relacional e a integridade será garantida através de chaves primárias e estrangeiras.
-3. **Feature Engineering (SQL)**: criação de visões analíticas para calcular métricas de risco (taxa de atraso, média de gastos, score, etc);
-4. **Modelagem Preditiva (Machine Learning):** Os dados preparados por SQL serão utilizados para treinar um modelo de classificação em Python;
+# 🏦 Credit Risk Predictor (Previsão de Risco de Crédito)
+
+## 📌 O Desafio de Negócio
+A inadimplência (calote) é um dos maiores causadores de prejuízo para instituições financeiras. O objetivo deste projeto End-to-End (Ponta a Ponta) é analisar o perfil de clientes fictícios, descobrir os padrões que levam ao atraso de faturas e construir um modelo de Inteligência Artificial capaz de prever o risco de crédito de novos clientes.
+
+## 🛠️ Tecnologias e Ferramentas Utilizadas
+* **Linguagem:** Python
+* **Banco de Dados:** PostgreSQL (Hospedado na nuvem via Render)
+* **Manipulação e Engenharia de Dados:** Pandas, SQLAlchemy
+* **Análise de Dados:** SQL Avançado (CTEs, JOINs, Agregações)
+* **Visualização:** Matplotlib, Seaborn
+* **Machine Learning:** Scikit-Learn (Random Forest)
+
+## 📂 As Fases do Projeto
+
+### 1️⃣ Engenharia e Fábrica de Dados
+Como não utilizei datasets prontos do Kaggle, criei um simulador em Python para gerar milhares de clientes e faturas fictícias com regras de negócio baseadas no mundo real (ex: clientes com score baixo têm maior probabilidade de calote). Esses dados foram enviados automaticamente para um banco de dados relacional na nuvem.
+
+### 2️⃣ Análise Exploratória com SQL (EDA)
+Realizei consultas no banco de dados para responder a perguntas de negócio cruciais:
+* Quais são os clientes com o maior número de faturas atrasadas e qual o Score deles? (*Resposta: Os clientes com id 268, 75 e 6 são os que possuem maior quantidade de faturas atrasadas)*
+* Quais os meses que possuem a maior quantidade de faturas atrasadas em ordem decrescente? *(Resposta: O mês 6 apresentou maior quantidade de faturas atrasadas)*
+* O valor absoluto da fatura influencia no calote? *(Resposta: Não significativamente)*
+* Qual estado civil possui a maior quantidade de faturas atrasadas? *(Resposta: O estado civil viúvo apresentou maior quantidade de faturas atrasadas)*
+* O peso da fatura no salário do cliente gera inadimplência? *(Resposta: Sim, faturas que consomem mais de 50% da renda são um alerta vermelho)*
+* O Score interno é um bom termômetro? *(Resposta: Sim, a maior parte dos calotes vem da faixa de Score C)*
+
+### 3️⃣ Visualização de Dados
+Para comunicar os resultados de forma clara, desenvolvi painéis visuais. 
+
+**Proporção de Atrasos por Peso da Fatura no Salário:**
+ ![alt text](image.png)I]
+
+**Inadimplência por Estado Civil:**
+![alt text](image-1.png)
+
+**Quantidades de faturas atrasadas por faixa de Score:**
+![alt text](image-2.png)
+### 4️⃣ Machine Learning (O Cérebro do Projeto)
+Após preparar os dados (transformando variáveis categóricas com One-Hot Encoding via `get_dummies`), treinei um modelo de **Random Forest (Floresta Aleatória)** para prever futuros calotes.
+
+**Resultados do Modelo:**
+* **Acurácia Final:** 84.67%
+* O modelo obteve excelente performance para identificar bons pagadores (Recall de 94%).
+* **Ponto de Melhoria Identificado:** Devido ao desbalanceamento natural dos dados (muito mais clientes bons do que ruins), o modelo teve dificuldade de identificar caloteiros isolados (Recall baixo para a classe 0). O próximo passo técnico seria aplicar técnicas de balanceamento (como SMOTE) para refinar a IA.
+
+**Matriz de Confusão do Modelo:**
+![alt text](image-3.png)
+## 💡 Conclusão
+Este projeto demonstra domínio completo do ciclo de vida dos dados: desde a concepção e arquitetura no banco de dados, passando por análises estatísticas e regras de negócio com SQL, até a entrega de um modelo preditivo funcional em Machine Learning.
