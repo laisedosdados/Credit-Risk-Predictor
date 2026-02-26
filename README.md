@@ -46,5 +46,13 @@ Após preparar os dados (transformando variáveis categóricas com One-Hot Encod
 
 **Matriz de Confusão do Modelo:**
 ![alt text](image-3.png)
+
+### 5️⃣ Deploy da Aplicação (O Produto Final)
+Para tirar o modelo do ambiente de desenvolvimento (Jupyter Notebook) e transformá-lo em um produto acessível, serializei a Inteligência Artificial utilizando a biblioteca `joblib` (`.pkl`) e construí uma interface web interativa utilizando o **Streamlit**. 
+Através dessa interface, é possível simular a entrada de um novo cliente (informando Renda, Fatura, Score e Estado Civil) e receber a previsão da IA em tempo real: **Aprovado** ou **Alerta de Risco**.
+
+**Tela do Simulador em Funcionamento:**
+![alt text](image-4.png)
+
 ## 💡 Conclusão
 Este projeto demonstra domínio completo do ciclo de vida dos dados: desde a concepção e arquitetura no banco de dados, passando por análises estatísticas e regras de negócio com SQL, até a entrega de um modelo preditivo funcional em Machine Learning.
